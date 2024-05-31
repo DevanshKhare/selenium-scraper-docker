@@ -5,20 +5,13 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 options = webdriver.ChromeOptions()
 
-def scraper(url, deep_scrap):
+def scraper(url):
     base_url = url.split(".com")[0] + ".com"
 
     driver = webdriver.Remote("http://ais-chrome:4444/wd/hub", DesiredCapabilities.CHROME, options=options)
     driver.get(url)
     while True:
         try:
-            if not deep_scrap:
-                body = driver.find_element(By.TAG_NAME, "body").text
-                time.sleep(10)
-                if len(body) > 0:
-                    driver.quit()
-                    return [body]
-            else:
                 links = driver.find_elements(By.TAG_NAME, "a")
                 if len(links) > 0:
                     all_links = [link.get_attribute('href') for link in links]
