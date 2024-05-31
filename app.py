@@ -53,3 +53,5 @@ def scraper(url, deep_scrap):
                     time.sleep(5)
         except Exception as e:
             return {"error": str(e)}
+
+scraper("https://yoursite.com", True)
