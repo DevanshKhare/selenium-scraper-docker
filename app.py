@@ -6,7 +6,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 options.add_argument("--headless")
-
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
 
 def scraper(url, deep_scrap):
 
