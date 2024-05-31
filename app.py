@@ -54,4 +54,5 @@ def scraper(url, deep_scrap):
         except Exception as e:
             return {"error": str(e)}
 
-scraper("https://yoursite.com", True)
+if __name__ == "__main__":
+    print(scraper("https://yoursite.com", True))
