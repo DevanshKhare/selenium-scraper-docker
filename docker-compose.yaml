@@ -1,0 +1,7 @@
+services:
+  chrome:
+    image: selenium/standalone-chrome:125.0
+    container_name: "chrome"
+    ports:
+      - 4444:4444
+      - 7900:7900
