@@ -1,4 +1,10 @@
 services:
+  python:
+    image: scraper/python
+    container_name: "scraper-python"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
   chrome:
     image: selenium/standalone-chrome:125.0
     container_name: "chrome"
