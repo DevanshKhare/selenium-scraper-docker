@@ -4,8 +4,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 options = webdriver.ChromeOptions()
+options.add_experimental_option("detach", True)
+options.add_argument("--headless")
+
 
 def scraper(url, deep_scrap):
+
     base_url = url.split(".com")[0] + ".com"
 
     driver = webdriver.Remote("http://ais-chrome:4444/wd/hub", DesiredCapabilities.CHROME, options=options)
