@@ -15,7 +15,6 @@ def scraper(url, deep_scrap):
 
     driver = webdriver.Remote("http://ais-chrome:4444/wd/hub", DesiredCapabilities.CHROME, options=options)
     driver.get(url)
-    print("Driver created", driver)
     while True:
         try:
             if not deep_scrap:
@@ -29,11 +28,9 @@ def scraper(url, deep_scrap):
                 if len(links) > 0:
                     all_links = [link.get_attribute('href') for link in links]
                     filtered_links = list(set(link for link in all_links if link and not link.endswith((".com", ".com/", "/home", "/sitemap", "/.xml", "/feed.xml")) and link.startswith(base_url) and not any(word in link for word in ["login", "signup", "sign-up", "auth"])))
-                    print("filtered.............",filtered_links, flush=True)
                     scraped_bodies = []
                     if(len(filtered_links) > 0):
                         for innerlink in filtered_links[:2]:
-                            print("innerlink.............",innerlink, flush=True)
                             time.sleep(5)
                             driver.get(innerlink)
                             while True:
